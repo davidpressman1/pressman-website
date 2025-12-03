@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>David Pressman | pressman.me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #111827;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #020617;
+      --border: #1f2937;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.7));
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      backdrop-filter: blur(16px);
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      border: 2px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at 30% 20%, #f97316, #b91c1c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 22px;
+      color: #f9fafb;
+      box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.7);
+    }
+
+    .titles h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    .titles p {
+      margin: 2px 0 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      border-color: rgba(148, 163, 184, 0.6);
+      color: var(--text);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        align-self: stretch;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.92));
+      border-radius: 18px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 18px 18px 20px;
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    .card h2 {
+      margin: 0 0 6px;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.5;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    }
+
+    .highlight {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-top: 10px;
+      font-size: 0.88rem;
+      border: 1px dashed rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+    }
+
+    .scores-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .score-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .score-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .team-name {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .league-tag {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .score-link {
+      font-size: 0.86rem;
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: var(--accent-soft);
+      color: #dbeafe;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .score-link:hover {
+      background: rgba(59, 130, 246, 0.28);
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="avatar">DP</div>
+        <div class="titles">
+          <h1>David Pressman</h1>
+          <p>pressman.me · New York sports fan & tech guy</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#scores">NY Sports</a>
+        <a href="mailto:you@pressman.me">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Left column -->
+      <section class="card" id="about">
+        <span class="pill">
+          <span class="pill-dot"></span>
+          Personal site
+        </span>
+        <h2>Hi, I’m David.</h2>
+        <p>
+          This is my little corner of the internet. By day I work in tech and help people
+          get their computers behaving. By night I’m usually following New York sports,
+          tinkering with side projects, or hanging out with the family.
+        </p>
+        <div class="highlight">
+          <strong>Edit this:</strong> Replace this text with a short bio
+          about you, your work, and anything else you want people to know.
+        </div>
+      </section>
+
+      <!-- Right column -->
+      <section class="card" id="scores">
+        <span class="pill">
+          <span class="pill-dot"></span>
+          Live scores hub
+        </span>
+        <h2>Latest NY sports scores</h2>
+        <p>
+          Tap a team below to jump straight to their live scores, schedule, and game results.
+          These links stay up to date automatically.
+        </p>
+
+        <div class="scores-grid">
+          <div class="score-card">
+            <div class="score-info">
+              <span class="team-name">New York Yankees</span>
+              <span class="league-tag">MLB · Scores & schedule</span>
+            </div>
+            <a class="score-link"
+               href="https://www.espn.com/mlb/team/_/name/nyy/new-york-yankees"
+               target="_blank" rel="noopener noreferrer">
+              View latest
+            </a>
+          </div>
+
+          <div class="score-card">
+            <div class="score-info">
+              <span class="team-name">New York Knicks</span>
+              <span class="league-tag">NBA · Scores & schedule</span>
+            </div>
+            <a class="score-link"
+               href="https://www.espn.com/nba/team/_/name/ny/new-york-knicks"
+               target="_blank" rel="noopener noreferrer">
+              View latest
+            </a>
+          </div>
+
+          <div class="score-card">
+            <div class="score-info">
+              <span class="team-name">New York Giants</span>
+              <span class="league-tag">NFL · Scores & schedule</span>
+            </div>
+            <a class="score-link"
+               href="https://www.espn.com/nfl/team/_/name/nyg/new-york-giants"
+               target="_blank" rel="noopener noreferrer">
+              View latest
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="card" id="projects" style="margin-top: 22px;">
+      <h2>Projects</h2>
+      <p>
+        A space for whatever you’re working on: home lab builds, scripts, tools,
+        or community projects. Add links or a small portfolio here.
+      </p>
+      <div class="highlight">
+        <strong>Example:</strong> “Helped build and manage IT infrastructure for several
+        organizations, including on-prem servers, Azure/Entra, M365, and remote users.”
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> pressman.me · Built with plain HTML &amp; CSS
+    </footer>
+  </div>
+
+  <script>
+    // Simple year auto-update
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
