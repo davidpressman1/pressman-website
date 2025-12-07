@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>pressman.me | NY Sports & Tech</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <style>
     :root {
       --bg: #020617;
@@ -16,87 +15,43 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #020617;
+      background:
+        radial-gradient(circle at top, rgba(251,191,36,0.08), transparent 60%),
+        #020617;
       color: var(--text);
       min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
     }
 
-    /* ⭐⭐⭐ ANIMATED SPORTS REPLAY BACKGROUND ⭐⭐⭐ */
-    #sports-bg {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      z-index: -1;
-      pointer-events: none;
-      opacity: 0.28;
-      filter: blur(22px);
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .replay-light {
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      opacity: 0.6;
-      mix-blend-mode: screen;
-      animation: drift 16s linear infinite;
-    }
-
-    .replay1 {
-      background: radial-gradient(circle, rgba(59,130,246,0.5), transparent 70%);
-      left: -20%;
-      top: 20%;
-      animation-duration: 20s;
-      animation-delay: -3s;
-    }
-
-    .replay2 {
-      background: radial-gradient(circle, rgba(249,115,22,0.35), transparent 70%);
-      right: -25%;
-      top: 50%;
-      animation-duration: 24s;
-      animation-delay: -6s;
-    }
-
-    .replay3 {
-      background: radial-gradient(circle, rgba(34,197,94,0.45), transparent 70%);
-      left: 40%;
-      bottom: -25%;
-      animation-duration: 28s;
-      animation-delay: -10s;
-    }
-
-    @keyframes drift {
-      0% { transform: translateY(0) translateX(0) scale(1); }
-      50% { transform: translateY(-20%) translateX(10%) scale(1.2); }
-      100% { transform: translateY(0) translateX(0) scale(1); }
-    }
-
-    /* FADE-IN ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .fade-in { opacity: 0; animation: fadeUp 0.7s ease-out forwards; }
-    .fade-in.delay-1 { animation-delay: 0.12s; }
-    .fade-in.delay-2 { animation-delay: 0.22s; }
-    .fade-in.delay-3 { animation-delay: 0.32s; }
-
-    /* PAGE */
     .page {
       max-width: 1080px;
       margin: 0 auto;
       padding: 20px 16px 40px;
-      position: relative;
-      z-index: 5;
     }
+
+    /* SIMPLE ANIMATION UTILITIES */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeUp 0.7s ease-out forwards;
+    }
+
+    .fade-in.delay-1 { animation-delay: 0.12s; }
+    .fade-in.delay-2 { animation-delay: 0.22s; }
+    .fade-in.delay-3 { animation-delay: 0.32s; }
 
     /* HEADER */
     header {
@@ -121,12 +76,14 @@
         radial-gradient(circle at 100% 0, rgba(239,68,68,0.18), transparent 55%);
       opacity: 0.45;
       mix-blend-mode: screen;
+      pointer-events: none;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
+      position: relative;
       z-index: 1;
     }
 
@@ -146,24 +103,41 @@
       box-shadow: 0 14px 30px rgba(0,0,0,0.85);
     }
 
-    .titles h1 { margin: 0; font-size: 1.7rem; }
-    .titles p { margin: 4px 0 0; color: var(--muted); }
+    .titles h1 {
+      margin: 0;
+      font-size: 1.7rem;
+      letter-spacing: 0.04em;
+    }
 
-    nav { display: flex; gap: 10px; z-index: 1; }
+    .titles p {
+      margin: 4px 0 0;
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      z-index: 1;
+    }
+
     .nav-pill {
       padding: 8px 14px;
       border-radius: 999px;
       border: 1px solid rgba(148,163,184,0.4);
       background: rgba(15,23,42,0.85);
       font-size: 0.85rem;
-      text-transform: uppercase;
       letter-spacing: 0.08em;
-      transition: 0.16s;
+      cursor: pointer;
+      transition: 0.16s ease-out;
+      text-transform: uppercase;
     }
+
     .nav-pill:hover {
       border-color: var(--accent);
       color: var(--accent);
       transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.8);
     }
 
     /* HERO */
@@ -184,15 +158,22 @@
     .hero-title { margin: 0 0 6px; font-size: 1.9rem; }
     .hero-subtitle { margin: 0; color: var(--muted); }
 
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
 
     .hero-tag {
       padding: 6px 10px;
-      border-radius: 999px;
       background: rgba(15,23,42,0.9);
       border: 1px solid var(--border);
-      color: var(--muted);
+      border-radius: 999px;
       font-size: 0.78rem;
+      display: inline-flex;
+      gap: 6px;
+      color: var(--muted);
     }
 
     .hero-note {
@@ -200,23 +181,34 @@
       padding: 10px;
       border-radius: 12px;
       border: 1px dashed var(--border);
-      color: var(--muted);
       font-size: 0.86rem;
+      color: var(--muted);
     }
 
     /* MINI CARDS */
-    .mini-column { display: flex; flex-direction: column; gap: 12px; }
+    .mini-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
     .mini-card {
       padding: 13px;
       border-radius: 18px;
       background: rgba(15,23,42,0.98);
       border: 1px solid var(--border);
+      font-size: 0.9rem;
       color: var(--muted);
       box-shadow: 0 12px 26px rgba(0,0,0,0.85);
     }
-    .mini-card h3 { margin: 0 0 4px; color: var(--text); }
 
-    /* SCORES SECTION */
+    .mini-card h3 {
+      margin: 0 0 4px;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    /* SCORE SECTION */
     .scores-section {
       margin-top: 28px;
       padding: 20px;
@@ -226,6 +218,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .scores-section::before {
       content: "";
       position: absolute;
@@ -235,9 +228,14 @@
         radial-gradient(circle at 80% 0, rgba(96,165,250,0.22), transparent 55%);
       opacity: 0.5;
       mix-blend-mode: screen;
+      pointer-events: none;
     }
 
-    .scores-inner { position: relative; z-index: 5; }
+    .scores-inner {
+      position: relative;
+      z-index: 1;
+    }
+
     .scores-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -245,20 +243,37 @@
       margin-top: 10px;
     }
 
-    /* TICKET CARD */
+    .scores-sub {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .scores-updated {
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: right;
+      opacity: 0.85;
+    }
+
+    /* TICKET CARDS */
     .ticket {
       padding: 16px;
       border-radius: 18px;
-      background: radial-gradient(circle at 0 0, var(--highlight), transparent 55%), rgba(15,23,42,0.96);
+      background:
+        radial-gradient(circle at 0 0, var(--highlight), transparent 55%),
+        rgba(15,23,42,0.96);
       border: 1px solid var(--border);
       box-shadow: 0 14px 30px rgba(0,0,0,0.95);
-      transition: 0.18s ease-out;
-      transform-style: preserve-3d;
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    /* The tilt effect gets applied here */
-    .ticket.tilt {
-      transform: perspective(700px) rotateX(3deg) translateY(-4px);
+    .ticket:hover {
+      transform: translateY(-6px) scale(1.01);
       box-shadow: 0 22px 50px rgba(0,0,0,1);
       border-color: rgba(148,163,184,0.8);
     }
@@ -270,66 +285,71 @@
       gap: 12px;
     }
 
+    .ticket-team-block {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex: 1;
+    }
+
     .team-badge {
       width: 52px;
       height: 52px;
-      border-radius: 14px;
+      border-radius: 16px;
       background: #f9fafb;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 6px;
-      overflow: hidden;
       box-shadow: 0 12px 28px rgba(0,0,0,0.85);
+      overflow: hidden;
     }
 
     .team-badge img {
       width: 85%;
       height: 85%;
       object-fit: contain;
+      display: block;
     }
 
-    .ticket-team-name { font-size: 1rem; font-weight: 600; }
-    .ticket-league { font-size: 0.8rem; color: var(--muted); }
+    .ticket-team-name {
+      font-size: 1rem;
+      font-weight: 600;
+    }
 
-    /* LIVE VIEW BUTTON */
+    .ticket-league {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
     .ticket-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 14px;
+      padding: 8px 14px;
+      border: 1px solid #f9fafb;
       border-radius: 999px;
-      border: 1px solid rgba(248,250,252,0.9);
-      background: radial-gradient(circle at 0 0, rgba(59,130,246,0.35), transparent 55%), rgba(15,23,42,0.96);
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      cursor: pointer;
-      transition: 0.15s;
+      letter-spacing: 0.12em;
+      background: rgba(15,23,42,0.95);
+      transition: 0.16s ease-out;
       white-space: nowrap;
     }
 
     .ticket-btn:hover {
-      border-color: #38bdf8;
-      color: #e0f2fe;
-      transform: translateY(-2px);
+      background: #111827;
+      color: var(--accent);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.9);
+      transform: translateY(-1px);
     }
 
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 10px rgba(34,197,94,0.9);
-      animation: livePulse 1.3s ease-out infinite;
-    }
-
-    .live-label { font-size: 0.78rem; }
-
-    @keyframes livePulse {
-      0%   { transform: scale(1); opacity: 1; }
-      60%  { transform: scale(1.6); opacity: 0.2; }
-      100% { transform: scale(1); opacity: 1; }
+    /* SCORE BOX NEXT TO TEAM */
+    .ticket-bottom {
+      margin-top: 4px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px dashed rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.85);
+      font-size: 0.8rem;
+      color: var(--muted);
     }
 
     footer {
@@ -339,6 +359,15 @@
       color: var(--muted);
     }
 
+    footer a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 768px) {
       header { flex-direction: column; align-items: flex-start; }
       .hero { grid-template-columns: 1fr; }
@@ -346,19 +375,8 @@
     }
   </style>
 </head>
-
 <body>
-
-  <!-- ⭐ FLOATING SPORTS REPLAY BACKGROUND ⭐ -->
-  <div id="sports-bg">
-    <div class="replay-light replay1"></div>
-    <div class="replay-light replay2"></div>
-    <div class="replay-light replay3"></div>
-  </div>
-
   <div class="page">
-
-    <!-- HEADER -->
     <header class="fade-in">
       <div class="brand">
         <div class="avatar">DP</div>
@@ -392,15 +410,14 @@
         </div>
 
         <div class="hero-note">
-          Short version: I keep systems running by day and check box scores by night.  
-          This site pulls it all into one home base.
+          Short version: I keep systems running by day and check box scores by night. This site pulls it all into one home base.
         </div>
       </div>
 
       <div class="mini-column">
         <div class="mini-card fade-in delay-2">
           <h3>NY scoreboard hub</h3>
-          Jump into live scores for all three teams with a single click.
+          Jump into live scores for all three teams with a single click from the section below.
         </div>
 
         <div class="mini-card fade-in delay-3" id="projects">
@@ -417,9 +434,11 @@
         <p class="scores-sub">
           Tap a team to jump to live scores, schedules, and game updates.
         </p>
+        <p class="scores-updated" id="scores-updated">
+          Last updated from ESPN: loading…
+        </p>
 
         <div class="scores-grid">
-
           <!-- Yankees -->
           <div class="ticket">
             <div class="ticket-top">
@@ -436,10 +455,12 @@
 
               <a class="ticket-btn"
                  href="https://www.espn.com/mlb/team/_/name/nyy/new-york-yankees"
-                 target="_blank">
-                 <span class="live-dot"></span>
-                 <span class="live-label">Live view</span>
-               </a>
+                 target="_blank" rel="noopener noreferrer">
+                View live
+              </a>
+            </div>
+            <div class="ticket-bottom" id="score-yankees">
+              Yankees last game: loading…
             </div>
           </div>
 
@@ -459,10 +480,12 @@
 
               <a class="ticket-btn"
                  href="https://www.espn.com/nba/team/_/name/ny/new-york-knicks"
-                 target="_blank">
-                 <span class="live-dot"></span>
-                 <span class="live-label">Live view</span>
+                 target="_blank" rel="noopener noreferrer">
+                View live
               </a>
+            </div>
+            <div class="ticket-bottom" id="score-knicks">
+              Knicks last game: loading…
             </div>
           </div>
 
@@ -482,41 +505,158 @@
 
               <a class="ticket-btn"
                  href="https://www.espn.com/nfl/team/_/name/nyg/new-york-giants"
-                 target="_blank">
-                 <span class="live-dot"></span>
-                 <span class="live-label">Live view</span>
+                 target="_blank" rel="noopener noreferrer">
+                View live
               </a>
             </div>
+            <div class="ticket-bottom" id="score-giants">
+              Giants last game: loading…
+            </div>
           </div>
-
         </div>
       </div>
     </section>
 
     <footer>
-  © <span id="year"></span> pressman.me · Built by 
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
-     target="_blank" 
-     rel="noopener noreferrer"
-     style="color:#38bdf8; text-decoration:none;">
-    David
-  </a>
-</footer>
-
-
+      © <span id="year"></span> pressman.me · Built by
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
+        David
+      </a>
+    </footer>
   </div>
 
   <script>
-    // Copyright year footer
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Enable tilt effect when hovering the live view button
-    document.querySelectorAll('.ticket').forEach(ticket => {
-      let btn = ticket.querySelector('.ticket-btn');
-      btn.addEventListener('mouseenter', () => ticket.classList.add('tilt'));
-      btn.addEventListener('mouseleave', () => ticket.classList.remove('tilt'));
+    // Helper: ESPN date string YYYYMMDD
+    function espnDateString(offsetDays) {
+      const d = new Date();
+      d.setDate(d.getDate() + offsetDays);
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, "0");
+      const day = String(d.getDate()).padStart(2, "0");
+      return `${y}${m}${day}`;
+    }
+
+    // Helper: "Oct 6"
+    function niceShortDate(dateStr) {
+      try {
+        const d = new Date(dateStr);
+        if (isNaN(d.getTime())) return "";
+        return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+      } catch {
+        return "";
+      }
+    }
+
+    async function fetchLastGameForTeam(options) {
+      const { leaguePath, abbrev, elId, label } = options;
+      const el = document.getElementById(elId);
+      if (!el) return;
+
+      el.textContent = `${label}: loading…`;
+
+      try {
+        const maxDaysBack = 10; // search back up to 10 days
+        for (let i = 0; i < maxDaysBack; i++) {
+          const dates = espnDateString(-i);
+          const url = `https://site.api.espn.com/apis/site/v2/sports/${leaguePath}/scoreboard?dates=${dates}`;
+          const res = await fetch(url);
+          if (!res.ok) continue;
+
+          const data = await res.json();
+          const events = data && data.events ? data.events : [];
+          if (!events.length) continue;
+
+          for (const ev of events) {
+            const comp = ev.competitions && ev.competitions[0];
+            if (!comp) continue;
+
+            const teams = comp.competitors || [];
+            if (!teams.length) continue;
+
+            const ourTeam = teams.find(
+              t =>
+                t.team &&
+                (t.team.abbreviation === abbrev ||
+                 t.team.shortDisplayName === abbrev ||
+                 t.team.name === abbrev)
+            );
+            if (!ourTeam) continue;
+
+            const status = (ev.status && ev.status.type) || (comp.status && comp.status.type) || {};
+            const state = (status.state || "").toLowerCase();
+
+            const home = teams.find(t => t.homeAway === "home");
+            const away = teams.find(t => t.homeAway === "away");
+
+            const isHome =
+              home && home.team && home.team.abbreviation === (ourTeam.team && ourTeam.team.abbreviation);
+            const teamObj = isHome ? home : away;
+            const oppObj = isHome ? away : home;
+
+            const teamScore = teamObj && teamObj.score != null ? teamObj.score : "?";
+            const oppScore = oppObj && oppObj.score != null ? oppObj.score : "?";
+
+            let resultPrefix = "";
+            const tsNum = Number(teamScore);
+            const osNum = Number(oppScore);
+
+            if (!isNaN(tsNum) && !isNaN(osNum) && state === "post") {
+              if (tsNum > osNum) resultPrefix = "W ";
+              else if (tsNum < osNum) resultPrefix = "L ";
+              else resultPrefix = "T ";
+            } else if (state.includes("in")) {
+              resultPrefix = "In progress ";
+            }
+
+            const oppName =
+              (oppObj &&
+                oppObj.team &&
+                (oppObj.team.shortDisplayName ||
+                 oppObj.team.abbreviation ||
+                 oppObj.team.name)) ||
+              "Opponent";
+
+            const venue = isHome ? "vs" : "@";
+            const prettyDate = niceShortDate(ev.date) || dates;
+
+            el.textContent = `${label}: ${resultPrefix}${teamScore}-${oppScore} ${venue} ${oppName} · ${prettyDate}`;
+            return;
+          }
+        }
+
+        el.textContent = `${label}: no recent game found`;
+      } catch (err) {
+        console.error(err);
+        el.textContent = `${label}: unable to load`;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const teams = [
+        { leaguePath: "baseball/mlb",   abbrev: "NYY", elId: "score-yankees", label: "Yankees last game" },
+        { leaguePath: "basketball/nba", abbrev: "NY",  elId: "score-knicks",  label: "Knicks last game" },
+        { leaguePath: "football/nfl",   abbrev: "NYG", elId: "score-giants",  label: "Giants last game" }
+      ];
+
+      const updatedEl = document.getElementById("scores-updated");
+
+      const promises = teams.map(fetchLastGameForTeam);
+
+      Promise.all(promises).then(() => {
+        if (updatedEl) {
+          const now = new Date();
+          const timeStr = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+          updatedEl.textContent = `Last updated from ESPN: ${timeStr}`;
+        }
+      }).catch(() => {
+        if (updatedEl) {
+          updatedEl.textContent = "Last updated from ESPN: unable to confirm (API error)";
+        }
+      });
     });
   </script>
-
 </body>
 </html>
