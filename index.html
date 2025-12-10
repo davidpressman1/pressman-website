@@ -3,21 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <title>pressman.me | NY Sports & Tech</title>
+
+  <!-- Mobile / responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Basic SEO -->
+  <meta name="description"
+        content="pressman.me — David Pressman's hub for New York sports scores (Yankees, Knicks, Giants, Rangers) and tech projects." />
+  <link rel="canonical" href="https://pressman.me/">
+
+  <!-- Social previews (optional but good for Google/Twitter/WhatsApp) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="pressman.me">
+  <meta property="og:title" content="pressman.me | NY Sports & Tech">
+  <meta property="og:description"
+        content="Live NY sports scores plus tech projects and experiments by David Pressman.">
+  <meta property="og:url" content="https://pressman.me/">
+  <!-- replace with a real image on your site when you have one -->
+  <meta property="og:image" content="https://pressman.me/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="pressman.me | NY Sports & Tech">
+  <meta name="twitter:description"
+        content="Live NY sports scores plus tech projects and experiments by David Pressman.">
+  <meta name="twitter:image" content="https://pressman.me/og-image.png">
+
+  <!-- Small performance win: preconnect to CDNs you hit -->
+  <link rel="preconnect" href="https://site.api.espn.com" crossorigin>
+  <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
+  <link rel="preconnect" href="https://a.espncdn.com" crossorigin>
+
+  <!-- Your styles -->
   <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
+  <!-- Accessibility: skip link helps keyboard users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="page">
-    <header class="fade-in">
+    <header class="fade-in" role="banner">
       <div class="brand">
-        <div class="avatar">DP</div>
+        <div class="avatar" aria-hidden="true">DP</div>
         <div class="titles">
           <h1>pressman.me</h1>
           <p>New York sports · Tech · Personal site</p>
         </div>
       </div>
 
-      <nav>
+      <nav aria-label="Primary navigation">
         <a class="nav-pill" href="#scores">Scores</a>
         <a class="nav-pill" href="#about">About</a>
         <a class="nav-pill" href="#projects">Projects</a>
@@ -25,155 +58,165 @@
       </nav>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-main fade-in delay-1" id="about">
-        <h2 class="hero-title">David Pressman</h2>
-        <p class="hero-subtitle">
-          NY sports fan, tech guy, tinkerer, and the person behind pressman.me.
-        </p>
+    <main id="main-content">
+      <!-- HERO -->
+      <section class="hero" id="about" aria-labelledby="about-heading">
+        <div class="hero-main fade-in delay-1">
+          <h2 class="hero-title" id="about-heading">David Pressman</h2>
+          <p class="hero-subtitle">
+            NY sports fan, tech guy, tinkerer, and the person behind pressman.me.
+          </p>
 
-        <div class="hero-tags">
-          <div class="hero-tag">⚾ Yankees</div>
-          <div class="hero-tag">🏀 Knicks</div>
-          <div class="hero-tag">🏈 Giants</div>
-          <div class="hero-tag">🏒 Rangers</div>
-          <div class="hero-tag">💻 IT and automation</div>
-        </div>
-
-        <div class="hero-note">
-          Short version: I keep systems running by day and check box scores by night. This site pulls it all into one home base.
-        </div>
-      </div>
-
-      <div class="mini-column">
-        <div class="mini-card fade-in delay-2">
-          <h3>NY scoreboard hub</h3>
-          Jump into live scores for all four teams with a single click from the section below.
-        </div>
-
-        <div class="mini-card fade-in delay-3" id="projects">
-          <h3>Projects</h3>
-          Scripts, automations, home lab experiments, and random ideas I feel like sharing.
-        </div>
-      </div>
-    </section>
-
-    <!-- SCORES -->
-    <section class="scores-section fade-in delay-2" id="scores">
-      <div class="scores-inner">
-        <h2>Live NY Sports Scores</h2>
-        <p class="scores-sub">
-          Tap a team to jump to live scores, schedules, and game updates.
-        </p>
-        <p class="scores-updated" id="scores-updated">
-          Last updated from ESPN: loading…
-        </p>
-
-        <div class="scores-grid">
-          <!-- Yankees -->
-          <div class="ticket">
-            <div class="ticket-top">
-              <div class="ticket-team-block">
-                <div class="team-badge">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/NewYorkYankees_caplogo.svg"
-                       alt="New York Yankees logo">
-                </div>
-                <div>
-                  <div class="ticket-team-name">New York Yankees</div>
-                  <div class="ticket-league">MLB · Scores and schedule</div>
-                </div>
-              </div>
-
-              <a class="ticket-btn"
-                 href="https://www.espn.com/mlb/team/_/name/nyy/new-york-yankees"
-                 target="_blank" rel="noopener noreferrer">
-                View live
-              </a>
-            </div>
-            <div class="ticket-bottom" id="score-yankees">
-              Yankees last game: loading…
-            </div>
+          <div class="hero-tags" aria-label="Favorite topics">
+            <div class="hero-tag">⚾ Yankees</div>
+            <div class="hero-tag">🏀 Knicks</div>
+            <div class="hero-tag">🏈 Giants</div>
+            <div class="hero-tag">🏒 Rangers</div>
+            <div class="hero-tag">💻 IT and automation</div>
           </div>
 
-          <!-- Knicks -->
-          <div class="ticket">
-            <div class="ticket-top">
-              <div class="ticket-team-block">
-                <div class="team-badge">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/2/25/New_York_Knicks_logo.svg"
-                       alt="New York Knicks logo">
-                </div>
-                <div>
-                  <div class="ticket-team-name">New York Knicks</div>
-                  <div class="ticket-league">NBA · Scores and schedule</div>
-                </div>
-              </div>
-
-              <a class="ticket-btn"
-                 href="https://www.espn.com/nba/team/_/name/ny/new-york-knicks"
-                 target="_blank" rel="noopener noreferrer">
-                View live
-              </a>
-            </div>
-            <div class="ticket-bottom" id="score-knicks">
-              Knicks last game: loading…
-            </div>
-          </div>
-
-          <!-- Giants -->
-          <div class="ticket">
-            <div class="ticket-top">
-              <div class="ticket-team-block">
-                <div class="team-badge">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/New_York_Giants_logo.svg"
-                       alt="New York Giants logo">
-                </div>
-                <div>
-                  <div class="ticket-team-name">New York Giants</div>
-                  <div class="ticket-league">NFL · Scores and schedule</div>
-                </div>
-              </div>
-
-              <a class="ticket-btn"
-                 href="https://www.espn.com/nfl/team/_/name/nyg/new-york-giants"
-                 target="_blank" rel="noopener noreferrer">
-                View live
-              </a>
-            </div>
-            <div class="ticket-bottom" id="score-giants">
-              Giants last game: loading…
-            </div>
-          </div>
-
-          <!-- Rangers -->
-          <div class="ticket">
-            <div class="ticket-top">
-              <div class="ticket-team-block">
-                <div class="team-badge">
-                  <!-- switched to a stable ESPN logo URL -->
-                  <img src="https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png"
-                       alt="New York Rangers logo">
-                </div>
-                <div>
-                  <div class="ticket-team-name">New York Rangers</div>
-                  <div class="ticket-league">NHL · Scores and schedule</div>
-                </div>
-              </div>
-
-              <a class="ticket-btn"
-                 href="https://www.espn.com/nhl/team/_/name/nyr/new-york-rangers"
-                 target="_blank" rel="noopener noreferrer">
-                View live
-              </a>
-            </div>
-            <div class="ticket-bottom" id="score-rangers">
-              Rangers last game: loading…
-            </div>
+          <div class="hero-note">
+            Short version: I keep systems running by day and check box scores by night.
+            This site pulls it all into one home base.
           </div>
         </div>
-      </div>
-    </section>
+
+        <aside class="mini-column" aria-label="Quick highlights">
+          <div class="mini-card fade-in delay-2">
+            <h3>NY scoreboard hub</h3>
+            Jump into live scores for all four teams with a single click from the section below.
+          </div>
+
+          <div class="mini-card fade-in delay-3" id="projects">
+            <h3>Projects</h3>
+            Scripts, automations, home lab experiments, and random ideas I feel like sharing.
+          </div>
+        </aside>
+      </section>
+
+      <!-- SCORES -->
+      <section class="scores-section fade-in delay-2" id="scores" aria-labelledby="scores-heading">
+        <div class="scores-inner">
+          <h2 id="scores-heading">Live NY Sports Scores</h2>
+          <p class="scores-sub">
+            Tap a team to jump to live scores, schedules, and game updates.
+          </p>
+          <p class="scores-updated" id="scores-updated">
+            Last updated from ESPN: loading…
+          </p>
+
+          <div class="scores-grid">
+            <!-- Yankees -->
+            <article class="ticket" aria-label="New York Yankees latest result">
+              <div class="ticket-top">
+                <div class="ticket-team-block">
+                  <div class="team-badge">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/70/NewYorkYankees_caplogo.svg"
+                      alt="New York Yankees logo"
+                      width="52" height="52" loading="lazy">
+                  </div>
+                  <div>
+                    <div class="ticket-team-name">New York Yankees</div>
+                    <div class="ticket-league">MLB · Scores and schedule</div>
+                  </div>
+                </div>
+
+                <a class="ticket-btn"
+                   href="https://www.espn.com/mlb/team/_/name/nyy/new-york-yankees"
+                   target="_blank" rel="noopener noreferrer">
+                  View live
+                </a>
+              </div>
+              <div class="ticket-bottom" id="score-yankees">
+                Yankees last game: loading…
+              </div>
+            </article>
+
+            <!-- Knicks -->
+            <article class="ticket" aria-label="New York Knicks latest result">
+              <div class="ticket-top">
+                <div class="ticket-team-block">
+                  <div class="team-badge">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/en/2/25/New_York_Knicks_logo.svg"
+                      alt="New York Knicks logo"
+                      width="52" height="52" loading="lazy">
+                  </div>
+                  <div>
+                    <div class="ticket-team-name">New York Knicks</div>
+                    <div class="ticket-league">NBA · Scores and schedule</div>
+                  </div>
+                </div>
+
+                <a class="ticket-btn"
+                   href="https://www.espn.com/nba/team/_/name/ny/new-york-knicks"
+                   target="_blank" rel="noopener noreferrer">
+                  View live
+                </a>
+              </div>
+              <div class="ticket-bottom" id="score-knicks">
+                Knicks last game: loading…
+              </div>
+            </article>
+
+            <!-- Giants -->
+            <article class="ticket" aria-label="New York Giants latest result">
+              <div class="ticket-top">
+                <div class="ticket-team-block">
+                  <div class="team-badge">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/6/60/New_York_Giants_logo.svg"
+                      alt="New York Giants logo"
+                      width="52" height="52" loading="lazy">
+                  </div>
+                  <div>
+                    <div class="ticket-team-name">New York Giants</div>
+                    <div class="ticket-league">NFL · Scores and schedule</div>
+                  </div>
+                </div>
+
+                <a class="ticket-btn"
+                   href="https://www.espn.com/nfl/team/_/name/nyg/new-york-giants"
+                   target="_blank" rel="noopener noreferrer">
+                  View live
+                </a>
+              </div>
+              <div class="ticket-bottom" id="score-giants">
+                Giants last game: loading…
+              </div>
+            </article>
+
+            <!-- Rangers -->
+            <article class="ticket" aria-label="New York Rangers latest result">
+              <div class="ticket-top">
+                <div class="ticket-team-block">
+                  <div class="team-badge">
+                    <img
+                      src="https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png"
+                      alt="New York Rangers logo"
+                      width="52" height="52" loading="lazy">
+                  </div>
+                  <div>
+                    <div class="ticket-team-name">New York Rangers</div>
+                    <div class="ticket-league">NHL · Scores and schedule</div>
+                  </div>
+                </div>
+
+                <a class="ticket-btn"
+                   href="https://www.espn.com/nhl/team/_/name/nyr/new-york-rangers"
+                   target="_blank" rel="noopener noreferrer">
+                  View live
+                </a>
+              </div>
+              <div class="ticket-bottom" id="score-rangers">
+                Rangers last game: loading…
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer>
       © <span id="year"></span> pressman.me · Built by
@@ -295,7 +338,6 @@
     document.addEventListener("DOMContentLoaded", () => {
       const teams = [
         { leaguePath: "baseball/mlb",   abbrev: "NYY", elId: "score-yankees", label: "Yankees last game" },
-        // Knicks back to original abbrev "NY"
         { leaguePath: "basketball/nba", abbrev: "NY",  elId: "score-knicks",  label: "Knicks last game" },
         { leaguePath: "football/nfl",   abbrev: "NYG", elId: "score-giants",  label: "Giants last game" },
         { leaguePath: "hockey/nhl",     abbrev: "NYR", elId: "score-rangers", label: "Rangers last game" }
@@ -320,4 +362,3 @@
   </script>
 </body>
 </html>
-
